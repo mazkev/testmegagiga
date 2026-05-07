@@ -1,64 +1,106 @@
 <template>
-    <div>
-        <div class="row">
+    <div class="min-h-screen bg-gray-50 dark:bg-gray-950 font-sans flex flex-col transition-colors duration-300">
+        <header class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 sticky top-0 z-40">
             <HeaderComp />
+        </header>
 
-        </div>
-        <div class="container">
-            <div class="my-4">
-                <h4 class="my-auto">Update Supplier</h4>
-            </div>
-            <b-form @submit="onUpdate" v-if="show" class="border p-4">
-                <b-form-group id="input-group-2" label="Nama Supplier:" label-for="input-2">
-                    <b-form-input id="input-2" v-model="form.namaSupplier" placeholder="Masukan Nama Supplier" required
-                        class="mb-3">
-                    </b-form-input>
-                </b-form-group>
-
-                <b-form-group id="input-group-1" label="Alamat Supplier:" label-for="input-1">
-                    <b-form-input id="input-1" v-model="form.alamat" placeholder="Masukan Alamat Supplier" required
-                        class="mb-3">
-                    </b-form-input>
-                </b-form-group>
-
-                <b-form-group id="input-group-3" label="No. Telp Supplier:" label-for="input-3">
-                    <b-form-input id="input-3" v-model="form.noTelp" placeholder="Masukan Nama No. Telp Supplier"
-                        required class="mb-3"></b-form-input>
-                </b-form-group>
-
-                <div class="text-center">
-                    <b-button type="submit" variant="primary" class="mx-3">Update</b-button>
-                    <router-link to="/dashboard" class="navbar-brand">
-                        <b-button variant="success" class="mx-3">Kembali</b-button>
-                    </router-link>
+        <div class="flex-grow container mx-auto px-4 py-12">
+            <div class="max-w-2xl mx-auto bg-white dark:bg-gray-900 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-800 overflow-hidden transition-colors duration-300">
+                <!-- Form Header -->
+                <div class="px-10 py-8 border-b border-gray-50 dark:border-gray-800 bg-gradient-to-r from-white to-gray-50/50 dark:from-gray-900 dark:to-gray-800/50 flex items-center space-x-4">
+                    <div class="p-3 bg-orange-100 dark:bg-orange-900/20 rounded-2xl text-orange-600 dark:text-orange-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-black text-gray-900 dark:text-white tracking-tight">Update Data Supplier</h1>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 font-medium italic">Edit informasi supplier yang telah terdaftar</p>
+                    </div>
                 </div>
-            </b-form>
+
+                <!-- Form Body -->
+                <form @submit.prevent="onUpdate" v-if="show" class="p-10 space-y-6">
+                    <div class="space-y-1">
+                        <label class="text-sm font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1">Nama Supplier</label>
+                        <input 
+                            v-model="form.namaSupplier" 
+                            type="text" 
+                            required 
+                            placeholder="Contoh: PT. Sumber Makmur"
+                            class="w-full px-5 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all bg-gray-50/30 dark:bg-gray-800 hover:bg-white dark:hover:bg-gray-700 dark:text-white"
+                        >
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-sm font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1">Alamat Lengkap</label>
+                        <textarea 
+                            v-model="form.alamat" 
+                            required 
+                            placeholder="Masukkan alamat lengkap..."
+                            rows="3"
+                            class="w-full px-5 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all bg-gray-50/30 dark:bg-gray-800 hover:bg-white dark:hover:bg-gray-700 dark:text-white resize-none"
+                        ></textarea>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="text-sm font-black text-gray-400 dark:text-gray-500 uppercase tracking-widest ml-1">Nomor Telepon</label>
+                        <div class="relative group">
+                            <span class="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500 font-bold">+62</span>
+                            <input 
+                                v-model="form.noTelp" 
+                                type="text" 
+                                required 
+                                placeholder="8123456789"
+                                class="w-full pl-16 pr-5 py-4 rounded-2xl border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-orange-500 focus:border-transparent outline-none transition-all bg-gray-50/30 dark:bg-gray-800 hover:bg-white dark:hover:bg-gray-700 dark:text-white"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="pt-8 flex flex-col sm:flex-row gap-4">
+                        <button 
+                            type="submit" 
+                            class="flex-grow bg-orange-500 hover:bg-orange-600 text-white font-black py-4 px-8 rounded-2xl transition-all duration-300 shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 transform hover:scale-[1.02] active:scale-[0.98]"
+                        >
+                            Update Supplier
+                        </button>
+                        <router-link to="/dashboard" class="sm:w-1/3">
+                            <button 
+                                type="button"
+                                class="w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 font-bold py-4 px-8 rounded-2xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
+                            >
+                                Batal
+                            </button>
+                        </router-link>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class="row fixed-bottom">
+
+        <footer class="mt-auto bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
             <FooterComp />
-        </div>
+        </footer>
     </div>
 </template>
   
 <script>
-import axios from "axios";
+import { storageService } from "@/services/storage";
 import FooterComp from "@/components/FooterComp.vue";
 import HeaderComp from "@/components/HeaderComp.vue";
 import swal from "sweetalert";
+
 export default {
     components: {
         FooterComp,
         HeaderComp,
-
     },
     data() {
         return {
-            result: {},
             form: {
                 alamat: "",
                 namaSupplier: "",
                 noTelp: "",
-                id: 0,
             },
             show: true,
         };
@@ -69,44 +111,21 @@ export default {
     methods: {
         async onLoad() {
             const id = this.$route.params.id;
-            const token = localStorage.getItem("token");
-            const data = await axios.get(
-                `http://159.223.57.121:8090/supplier/find-by-id/${id}`,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                }
-            );
-            console.log(data);
-            const result = await (await data).data.data;
-            console.log("ini result", result);
-            this.form = result;
+            const result = storageService.findSupplierById(id);
+            if (result) {
+                this.form = { ...result };
+            }
         },
-        async onUpdate(event) {
+        async onUpdate() {
             const id = this.$route.params.id;
-
-            event.preventDefault();
-            const token = localStorage.getItem("token");
             try {
-                const data = await axios.put(
-                    `http://159.223.57.121:8090/supplier/update/${id}`,
-                    this.form,
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                        },
-                    }
-                );
-                console.log("ini update", data);
-                swal("Succes!", "Data Supplier Berhasil Diupdate!", "success");
-                
+                storageService.updateSupplier(id, this.form);
+                swal("Berhasil!", "Data supplier telah diperbarui", "success");
                 this.$router.push("/dashboard");
             } catch (error) {
-                alert("data gagal diupdate");
+                swal("Gagal!", "Gagal memperbarui data supplier", "error");
             }
         },
     },
 };
 </script>
-  

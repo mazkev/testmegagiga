@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased text-gray-900 bg-gray-50;
+  }
+  
+  /* Dark mode global styles */
+  .dark body {
+    @apply text-gray-100 bg-gray-950;
+  }
+}
+
+/* SweetAlert Dark Mode Overrides */
+.dark .sweet-alert {
+  @apply bg-gray-900 border border-gray-800 text-white !important;
+}
+.dark .sweet-alert h2, 
+.dark .sweet-alert p {
+  @apply text-white !important;
+}
+.dark .sweet-alert .sa-icon.sa-success::before,
+.dark .sweet-alert .sa-icon.sa-success::after,
+.dark .sweet-alert .sa-icon.sa-success .sa-fix {
+  @apply bg-gray-900 !important;
+}
+.dark .sweet-alert .sa-button-container button {
+  @apply border-0 !important;
+}
+.dark .sweet-alert .sa-input-error {
+  @apply bg-red-900/20 !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 dark:bg-gray-700 rounded-full hover:bg-gray-400 dark:hover:bg-gray-600 transition-colors;
+}
