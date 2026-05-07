@@ -32,6 +32,16 @@ A high-fidelity, professional inventory management system designed for modern bu
 
 ---
 
+## 📖 How to Use
+
+1. **Seed Data**: Upon first launch, navigate to **Daftar Barang** and click the **"Seed"** button. This will instantly populate the app with demo inventory and supplier data so you can test the charts and filters.
+2. **Toggle Dark Mode**: Use the **Sun/Moon icon** in the top right header to switch between Light and Obsidian Dark themes.
+3. **Analyze Inventory**: View the **Analytics Charts** above the inventory list to see your stock distribution in real-time.
+4. **Generate Reports**: Use the **"Export Data"** dropdown to download your current inventory or supplier list as a PDF or Excel file.
+5. **Track History**: Navigate to **Riwayat Transaksi** to see an audit log of all system activities.
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -41,8 +51,8 @@ A high-fidelity, professional inventory management system designed for modern bu
 ### Installation
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/marketplace-invent.git
-   cd marketplace-invent
+   git clone https://github.com/mazkev/testmegagiga.git
+   cd testmegagiga
    ```
 
 2. **Install dependencies**
@@ -79,7 +89,7 @@ A high-fidelity, professional inventory management system designed for modern bu
 
 ## 👤 Author
 **Pratama7**
-- Github: [@pratama7](https://github.com/pratama7)
+- Github: [@pratama7](https://github.com/mazkev)
 
 ---
 
