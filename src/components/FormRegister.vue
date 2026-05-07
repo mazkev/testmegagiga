@@ -106,7 +106,7 @@ export default {
     methods: {
         async onSubmit() {
             try {
-                const data = storageService.register(this.form);
+                storageService.register(this.form);
                 swal("Berhasil!", "Akun Anda berhasil dibuat. Silahkan login.", "success");
                 this.onReset();
                 this.$router.push("/");
